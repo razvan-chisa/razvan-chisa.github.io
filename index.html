@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ronny — Software Engineer. Career presentation: architecture, clarity, and systems thinking." />
+    <title>Ronny — Software Engineer</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="site-nav" id="site-nav">
+      <a class="site-nav__brand" href="#intro">Ronny<span class="dot">.</span></a>
+      <nav class="site-nav__links" aria-label="Primary">
+        <a href="#intro">Intro</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="intro" class="splash">
+        <div class="splash__bg" id="splash-bg" aria-hidden="true">
+          <img class="splash__bg-image" id="splash-bg-image" alt="" />
+        </div>
+        <div class="splash__scrim" aria-hidden="true"></div>
+
+        <div class="headlights" aria-hidden="true">
+          <span class="headlight headlight--left"></span>
+          <span class="headlight headlight--right"></span>
+        </div>
+        <div class="flash-overlay" aria-hidden="true"></div>
+
+        <div class="splash__content">
+          <h1 class="splash__title" aria-label="Ronny">
+            <span class="splash__title-text">Ronny</span>
+          </h1>
+          <p class="splash__subtitle">Software Engineer</p>
+
+          <div class="splash__copy" id="splash-copy">
+            <p class="typewriter-line" id="line-1" data-text="Programming is more than just code, it's about software products and services."><span class="typewriter-line__text"></span><span class="typewriter-line__cursor">&nbsp;</span></p>
+            <p class="typewriter-line" id="line-2" data-text="Software is more than just a big list of features, it's about ongoing collaboration."><span class="typewriter-line__text"></span><span class="typewriter-line__cursor">&nbsp;</span></p>
+          </div>
+        </div>
+
+        <div class="splash__scroll-cue" aria-hidden="true">
+          <span></span>
+        </div>
+      </section>
+
+      <!-- Upcoming parallax-driven sections (architecture, clarity, systems thinking,
+           projects, contact) will be appended below this point. -->
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
