@@ -18,6 +18,7 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -117,16 +118,41 @@ a {
   background: var(--bg);
 }
 
+/* ---------------- Home screen (revealed once the flash clears) ---------------- */
+
+.splash__home {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ---------------- Single approaching flash ---------------- */
 
+/* The layer is viewport-sized and clips its contents; the circle inside it is
+   deliberately sized far larger than the viewport, so once it has grown past
+   the layer's bounds its round edge is trimmed away and it reads as a solid,
+   full-bleed flash rather than a shrinking disc. */
 .intro-flash {
   position: fixed;
   inset: 0;
-  z-index: 6;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(circle, #fffef4 0%, #ffedb8 35%, rgba(255, 237, 184, 0.55) 62%, rgba(255, 237, 184, 0) 78%);
+}
+
+.intro-flash__circle {
+  width: 22vmin;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffef4 0%, #ffedb8 45%, #fff6da 100%);
   opacity: 0;
-  transform: scale(0.02);
+  transform: scale(0.06);
   will-change: transform, opacity;
   animation:
     flash-grow 0.85s cubic-bezier(0.55, 0, 0.85, 0.3) forwards,
@@ -136,14 +162,14 @@ a {
 
 @keyframes flash-grow {
   0% {
-    transform: scale(0.02);
+    transform: scale(0.06);
     opacity: 0.25;
   }
   60% {
     opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: scale(22);
     opacity: 1;
   }
 }
@@ -200,6 +226,9 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  width: min(100%, 52rem);
+  transform: translateY(0);
 }
 
 /* Title */
@@ -217,10 +246,10 @@ a {
 }
 
 .splash__title-text {
-  background: linear-gradient(120deg, var(--fg) 40%, var(--accent-soft) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #7eddff;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
 }
 
 @keyframes title-impact {
@@ -267,6 +296,7 @@ a {
 
 .splash__copy {
   margin-top: 2.75rem;
+  width: 100%;
   max-width: 52rem;
   display: flex;
   flex-direction: column;

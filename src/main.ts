@@ -18,7 +18,8 @@ if (splashBgImageEl instanceof HTMLImageElement) {
 
 if (introFlashEl instanceof HTMLElement) {
   // Once the flash has fully faded out, it has no further visual purpose —
-  // remove it from the DOM entirely rather than leaving a hidden layer behind.
+  // remove the whole layer (and its circle) from the DOM rather than leaving
+  // a hidden overlay behind. `animationend` bubbles up from the inner circle.
   introFlashEl.addEventListener('animationend', (event) => {
     if (event.animationName === 'flash-fade') {
       introFlashEl.remove();
