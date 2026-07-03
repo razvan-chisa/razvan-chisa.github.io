@@ -6,6 +6,9 @@ import qualityConsultingVideoUrl from './assets/stock-footage-man-and-woman-at-d
 import systemsThinkingVideoUrl from './assets/stock-footage-center-woman-planning-reaching-with-red-marker-writing-on-glass-while-tech-overlaying-charts.webm';
 import aiIntegrationsVideoUrl from './assets/stock-footage-brainstorming-concept-icon-idea-on-robot-arm-artificial-intelligence-k-size-movie.webm';
 import { runTypewriters, typeInto } from './typewriter';
+import { mountSharedSections } from './shared-sections';
+
+mountSharedSections();
 
 // Matches the moment the `.splash__copy` container has fully faded in
 // (see the `fade-up` animation delay + duration in style.css), i.e. after

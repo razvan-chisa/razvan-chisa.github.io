@@ -16,8 +16,8 @@
       <a class="site-nav__brand" href="#intro">Ronny<span class="dot">.</span></a>
       <nav class="site-nav__links" aria-label="Primary">
         <a href="#intro">Intro</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="./projects/">Projects</a>
+        <a href="./contact/">Contact</a>
       </nav>
     </header>
 
@@ -117,156 +117,9 @@
         </div>
       </section>
 
-      <section id="personal-projects" class="parallax-section" aria-labelledby="personal-projects-title">
-        <div class="parallax-section__inner">
-          <h2 class="parallax-section__title typewriter-line" id="personal-projects-title" data-text="Personal Projects">
-            <span class="typewriter-line__text"></span><span class="typewriter-line__cursor">&nbsp;</span>
-          </h2>
+      <div data-shared-section="projects"></div>
 
-          <div class="parallax-section__content" id="personal-projects-content">
-            <div class="projects-grid" aria-label="Personal project cards">
-              <a class="project-card" href="./dummy/" aria-label="Open Urban Recycling project details">
-                <img class="project-card__image" id="project-image-1" alt="Urban Recycling project screenshot" />
-                <span class="project-card__label">Urban Recycling</span>
-              </a>
-
-              <a class="project-card" href="./dummy/" aria-label="Open Urban Recycling project details">
-                <img class="project-card__image" id="project-image-2" alt="Urban Recycling project screenshot" />
-                <span class="project-card__label">Urban Recycling</span>
-              </a>
-
-              <a class="project-card" href="./dummy/" aria-label="Open Urban Recycling project details">
-                <img class="project-card__image" id="project-image-3" alt="Urban Recycling project screenshot" />
-                <span class="project-card__label">Urban Recycling</span>
-              </a>
-
-              <a class="project-card" href="./dummy/" aria-label="Open Urban Recycling project details">
-                <img class="project-card__image" id="project-image-4" alt="Urban Recycling project screenshot" />
-                <span class="project-card__label">Urban Recycling</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="parallax-section" aria-labelledby="collaboration-title">
-        <div class="parallax-section__inner">
-          <h2 class="parallax-section__title typewriter-line" id="collaboration-title" data-text="Let's collaborate">
-            <span class="typewriter-line__text"></span><span class="typewriter-line__cursor">&nbsp;</span>
-          </h2>
-
-          <div class="parallax-section__content" id="collaboration-content">
-            <div class="collaboration">
-              <p class="collaboration__question">Would you like to start a collaboration with me?</p>
-
-              <div class="collaboration__choices" role="group" aria-label="Collaboration preference">
-                <button type="button" class="choice-button" id="collaboration-yes" aria-controls="contact-form-card">Yes</button>
-                <button type="button" class="choice-button" id="collaboration-no" aria-controls="feedback-form-card">No</button>
-              </div>
-
-              <article class="form-card" id="contact-form-card" hidden>
-                <h3 class="form-card__title">Contact Form</h3>
-                <form class="smart-form" action="./dummy/" method="get">
-                  <label class="smart-form__field">
-                    <span>Fullname</span>
-                    <input type="text" name="fullname" autocomplete="name" required />
-                  </label>
-
-                  <label class="smart-form__field">
-                    <span>Email</span>
-                    <input type="email" name="email" autocomplete="email" required />
-                  </label>
-
-                  <label class="smart-form__field">
-                    <span>Gender</span>
-                    <select name="gender" id="gender-select" required>
-                      <option value="" selected disabled>Select gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="non-binary">Non-binary</option>
-                    </select>
-                  </label>
-
-                  <label class="smart-form__field">
-                    <span>Title</span>
-                    <input type="text" name="title" autocomplete="title" required />
-                  </label>
-
-                  <label class="smart-form__field">
-                    <span>Business Domain</span>
-                    <select name="business_domain" id="contact-domain-select" required>
-                      <option value="" selected disabled>Select domain</option>
-                      <option value="finance">Finance</option>
-                      <option value="healthcare">Healthcare</option>
-                      <option value="retail">Retail & Ecommerce</option>
-                      <option value="manufacturing">Manufacturing</option>
-                      <option value="logistics">Logistics</option>
-                      <option value="public">Public Sector</option>
-                      <option value="education">Education</option>
-                    </select>
-                  </label>
-
-                  <label class="smart-form__field smart-form__field--full">
-                    <span>Project hashtags</span>
-                    <div
-                      class="tags-editor"
-                      data-hashtags-editor
-                      data-source-select-id="contact-domain-select"
-                      data-default-prefix="domain"
-                    >
-                      <div class="tags-editor__list" data-hashtags-list aria-live="polite"></div>
-                      <input
-                        type="text"
-                        class="tags-editor__input"
-                        data-hashtags-input
-                        placeholder="Type and press Enter"
-                        aria-label="Project hashtags"
-                      />
-                      <input type="hidden" name="hashtags" data-hashtags-value />
-                    </div>
-                  </label>
-
-                  <label class="smart-form__field smart-form__field--full">
-                    <span>Message</span>
-                    <textarea name="message" rows="5" required></textarea>
-                  </label>
-
-                  <button class="smart-form__submit smart-form__field--full" type="submit">Submit</button>
-                </form>
-              </article>
-
-              <article class="form-card" id="feedback-form-card" hidden>
-                <h3 class="form-card__title">Feedback Form</h3>
-                <form class="smart-form" action="./dummy/" method="get">
-                  <label class="smart-form__field">
-                    <span>Email (optional)</span>
-                    <input type="email" name="feedback_email" autocomplete="email" />
-                  </label>
-
-                  <label class="smart-form__field">
-                    <span>Feedback category</span>
-                    <select name="feedback_category" required>
-                      <option value="" selected disabled>Select category</option>
-                      <option value="website">Website</option>
-                      <option value="projects">Projects</option>
-                      <option value="content">Content clarity</option>
-                      <option value="collaboration">Collaboration process</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </label>
-
-                  <label class="smart-form__field smart-form__field--full">
-                    <span>Message</span>
-                    <textarea name="feedback_message" rows="5" required></textarea>
-                  </label>
-
-                  <button class="smart-form__submit smart-form__field--full" type="submit">Submit</button>
-                </form>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div data-shared-section="contact"></div>
     </main>
 
     <script type="module" src="/src/main.ts"></script>
