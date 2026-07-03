@@ -23,6 +23,12 @@ const aiIntegrationsVideoEl = document.getElementById('ai-integrations-video');
 const projectImageEls = [1, 2, 3, 4]
   .map((index) => document.getElementById(`project-image-${index}`))
   .filter((element): element is HTMLImageElement => element instanceof HTMLImageElement);
+const collaborationYesButtonEl = document.getElementById('collaboration-yes');
+const collaborationNoButtonEl = document.getElementById('collaboration-no');
+const contactFormCardEl = document.getElementById('contact-form-card');
+const feedbackFormCardEl = document.getElementById('feedback-form-card');
+const genderSelectEl = document.getElementById('gender-select');
+const genderCustomFieldEl = document.getElementById('gender-custom-field');
 
 if (splashBgImageEl instanceof HTMLImageElement) {
   splashBgImageEl.src = splashImageUrl;
@@ -120,6 +126,157 @@ function setupParallaxTypewriterReveal({
   }
 }
 
+function setupCollaborationForms(): void {
+  if (
+    !(collaborationYesButtonEl instanceof HTMLButtonElement) ||
+    !(collaborationNoButtonEl instanceof HTMLButtonElement) ||
+    !(contactFormCardEl instanceof HTMLElement) ||
+    !(feedbackFormCardEl instanceof HTMLElement)
+  ) {
+    return;
+  }
+
+  const setMode = (mode: 'contact' | 'feedback'): void => {
+    const isContact = mode === 'contact';
+
+    contactFormCardEl.hidden = !isContact;
+    feedbackFormCardEl.hidden = isContact;
+
+    collaborationYesButtonEl.classList.toggle('is-active', isContact);
+    collaborationNoButtonEl.classList.toggle('is-active', !isContact);
+
+    collaborationYesButtonEl.setAttribute('aria-pressed', String(isContact));
+    collaborationNoButtonEl.setAttribute('aria-pressed', String(!isContact));
+  };
+
+  collaborationYesButtonEl.addEventListener('click', () => {
+    setMode('contact');
+  });
+
+  collaborationNoButtonEl.addEventListener('click', () => {
+    setMode('feedback');
+  });
+
+  if (genderSelectEl instanceof HTMLSelectElement && genderCustomFieldEl instanceof HTMLElement) {
+    const updateGenderField = () => {
+      const needsCustomValue = genderSelectEl.value === 'non-binary';
+      genderCustomFieldEl.hidden = !needsCustomValue;
+    };
+
+    genderSelectEl.addEventListener('change', updateGenderField);
+    updateGenderField();
+  }
+}
+
+function setupHashtagEditors(): void {
+  const editors = document.querySelectorAll<HTMLElement>('[data-hashtags-editor]');
+
+  editors.forEach((editorEl) => {
+    const listEl = editorEl.querySelector<HTMLElement>('[data-hashtags-list]');
+    const inputEl = editorEl.querySelector<HTMLInputElement>('[data-hashtags-input]');
+    const hiddenValueEl = editorEl.querySelector<HTMLInputElement>('[data-hashtags-value]');
+    const sourceSelectId = editorEl.dataset.sourceSelectId ?? '';
+    const defaultPrefix = editorEl.dataset.defaultPrefix ?? 'domain';
+    const sourceSelectEl = sourceSelectId ? document.getElementById(sourceSelectId) : null;
+
+    if (!(listEl instanceof HTMLElement) || !(inputEl instanceof HTMLInputElement) || !(hiddenValueEl instanceof HTMLInputElement)) {
+      return;
+    }
+
+    const tags: string[] = [];
+    let autoTag: string | null = null;
+
+    const normalizeTag = (rawTag: string): string => {
+      return rawTag
+        .trim()
+        .toLowerCase()
+        .replace(/^#+/, '')
+        .replace(/\s+/g, '-')
+        .replace(/[^a-z0-9-_]/g, '');
+    };
+
+    const renderTags = (): void => {
+      listEl.replaceChildren();
+
+      tags.forEach((tag) => {
+        const pillEl = document.createElement('button');
+        pillEl.type = 'button';
+        pillEl.className = 'tags-editor__tag';
+        pillEl.setAttribute('aria-label', `Remove hashtag ${tag}`);
+        pillEl.textContent = `#${tag}`;
+
+        const removeEl = document.createElement('span');
+        removeEl.className = 'tags-editor__remove';
+        removeEl.setAttribute('aria-hidden', 'true');
+        removeEl.textContent = '×';
+        pillEl.appendChild(removeEl);
+
+        pillEl.addEventListener('click', () => {
+          const tagIndex = tags.indexOf(tag);
+          if (tagIndex < 0) return;
+          tags.splice(tagIndex, 1);
+          if (autoTag === tag) autoTag = null;
+          renderTags();
+        });
+
+        listEl.appendChild(pillEl);
+      });
+
+      hiddenValueEl.value = tags.join(',');
+    };
+
+    const addTag = (rawTag: string): void => {
+      const tag = normalizeTag(rawTag);
+      if (!tag || tags.includes(tag)) return;
+      tags.push(tag);
+      renderTags();
+    };
+
+    const setDefaultTagFromSelect = (): void => {
+      if (!(sourceSelectEl instanceof HTMLSelectElement)) return;
+
+      if (autoTag) {
+        const autoTagIndex = tags.indexOf(autoTag);
+        if (autoTagIndex >= 0) tags.splice(autoTagIndex, 1);
+        autoTag = null;
+      }
+
+      const domainValue = normalizeTag(sourceSelectEl.value);
+      if (!domainValue) {
+        renderTags();
+        return;
+      }
+
+      autoTag = `${defaultPrefix}-${domainValue}`;
+      if (!tags.includes(autoTag)) tags.unshift(autoTag);
+      renderTags();
+    };
+
+    inputEl.addEventListener('keydown', (event) => {
+      const pressedEnter = event.key === 'Enter';
+      const pressedComma = event.key === ',';
+      if (!pressedEnter && !pressedComma) return;
+
+      event.preventDefault();
+      addTag(inputEl.value);
+      inputEl.value = '';
+    });
+
+    inputEl.addEventListener('blur', () => {
+      if (!inputEl.value.trim()) return;
+      addTag(inputEl.value);
+      inputEl.value = '';
+    });
+
+    if (sourceSelectEl instanceof HTMLSelectElement) {
+      sourceSelectEl.addEventListener('change', setDefaultTagFromSelect);
+      setDefaultTagFromSelect();
+    } else {
+      renderTags();
+    }
+  });
+}
+
 setupParallaxTypewriterReveal({
   titleId: 'architecture-title',
   contentId: 'architecture-content',
@@ -168,3 +325,11 @@ setupParallaxTypewriterReveal({
   titleId: 'personal-projects-title',
   contentId: 'personal-projects-content',
 });
+
+setupParallaxTypewriterReveal({
+  titleId: 'collaboration-title',
+  contentId: 'collaboration-content',
+});
+
+setupCollaborationForms();
+setupHashtagEditors();
