@@ -1,6 +1,6 @@
 import './style.css';
 import splashImageUrl from './assets/splash-screen.png';
-import architectureDiagramUrl from './assets/Diagram Architecture.png';
+import architectureDiagramUrl from './assets/Architecture Diagram - Razvan Chisa v2.jpg';
 import urbanRecyclingImageUrl from './assets/UrbanRecycling.png';
 import qualityConsultingVideoUrl from './assets/stock-footage-man-and-woman-at-desk-with-laptop-shake-hands-hand-extended-across-table-over-documents-in.webm';
 import systemsThinkingVideoUrl from './assets/stock-footage-center-woman-planning-reaching-with-red-marker-writing-on-glass-while-tech-overlaying-charts.webm';
