@@ -561,6 +561,13 @@ main {
   color: var(--fg);
 }
 
+@media (max-width: 47.99rem) {
+  .collaboration__question {
+    max-width: 20em;
+    margin-inline: auto;
+  }
+}
+
 .collaboration__choices {
   width: 100%;
   display: flex;
