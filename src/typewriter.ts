@@ -9,7 +9,7 @@ type TypeIntoOptions = {
  * time. Speed varies slightly per character so multiple lines running
  * concurrently don't look mechanically synchronized.
  */
-function typeInto(
+export function typeInto(
   el: HTMLElement,
   text: string,
   { charDelay = 32, jitter = 18, onDone }: TypeIntoOptions = {},

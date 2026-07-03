@@ -8,6 +8,10 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>
+    <div class="global-bg" id="global-bg" aria-hidden="true">
+      <img class="global-bg__image" id="splash-bg-image" alt="" />
+    </div>
+
     <header class="site-nav" id="site-nav">
       <a class="site-nav__brand" href="#intro">Ronny<span class="dot">.</span></a>
       <nav class="site-nav__links" aria-label="Primary">
@@ -20,9 +24,6 @@
     <main>
       <section id="intro" class="splash">
         <div class="splash__home">
-          <div class="splash__bg" id="splash-bg" aria-hidden="true">
-            <img class="splash__bg-image" id="splash-bg-image" alt="" />
-          </div>
           <div class="splash__scrim" aria-hidden="true"></div>
 
           <div class="splash__content">
@@ -47,8 +48,17 @@
         </div>
       </section>
 
-      <!-- Upcoming parallax-driven sections (architecture, clarity, systems thinking,
-           projects, contact) will be appended below this point. -->
+      <section id="architecture" class="parallax-section" aria-labelledby="architecture-title">
+        <div class="parallax-section__inner">
+          <h2 class="parallax-section__title typewriter-line" id="architecture-title" data-text="Architecture diagrams">
+            <span class="typewriter-line__text"></span><span class="typewriter-line__cursor">&nbsp;</span>
+          </h2>
+
+          <div class="parallax-section__content" id="architecture-content">
+            <img class="parallax-section__image" id="architecture-image" alt="Architecture design" />
+          </div>
+        </div>
+      </section>
     </main>
 
     <script type="module" src="/src/main.ts"></script>
