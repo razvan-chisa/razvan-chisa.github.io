@@ -1,6 +1,7 @@
 import './style.css';
 import splashImageUrl from './assets/splash-screen.png';
 import architectureDiagramUrl from './assets/Diagram Architecture.png';
+import urbanRecyclingImageUrl from './assets/UrbanRecycling.png';
 import qualityConsultingVideoUrl from './assets/stock-footage-man-and-woman-at-desk-with-laptop-shake-hands-hand-extended-across-table-over-documents-in.webm';
 import systemsThinkingVideoUrl from './assets/stock-footage-center-woman-planning-reaching-with-red-marker-writing-on-glass-while-tech-overlaying-charts.webm';
 import aiIntegrationsVideoUrl from './assets/stock-footage-brainstorming-concept-icon-idea-on-robot-arm-artificial-intelligence-k-size-movie.webm';
@@ -19,6 +20,9 @@ const architectureImageEl = document.getElementById('architecture-image');
 const qualityConsultingVideoEl = document.getElementById('quality-consulting-video');
 const systemsThinkingVideoEl = document.getElementById('systems-thinking-video');
 const aiIntegrationsVideoEl = document.getElementById('ai-integrations-video');
+const projectImageEls = [1, 2, 3, 4]
+  .map((index) => document.getElementById(`project-image-${index}`))
+  .filter((element): element is HTMLImageElement => element instanceof HTMLImageElement);
 
 if (splashBgImageEl instanceof HTMLImageElement) {
   splashBgImageEl.src = splashImageUrl;
@@ -39,6 +43,10 @@ if (systemsThinkingVideoEl instanceof HTMLVideoElement) {
 if (aiIntegrationsVideoEl instanceof HTMLVideoElement) {
   aiIntegrationsVideoEl.src = aiIntegrationsVideoUrl;
 }
+
+projectImageEls.forEach((projectImageEl) => {
+  projectImageEl.src = urbanRecyclingImageUrl;
+});
 
 if (introFlashEl instanceof HTMLElement) {
   // Once the flash has fully faded out, it has no further visual purpose —
@@ -154,4 +162,9 @@ setupParallaxTypewriterReveal({
       // Ignore autoplay rejections in restrictive environments.
     });
   },
+});
+
+setupParallaxTypewriterReveal({
+  titleId: 'personal-projects-title',
+  contentId: 'personal-projects-content',
 });
