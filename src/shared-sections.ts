@@ -64,21 +64,6 @@ const sharedSectionMarkup: Record<SharedSectionName, string> = {
                 </label>
 
                 <label class="smart-form__field">
-                  <span>Gender</span>
-                  <select name="gender" id="gender-select" required>
-                    <option value="" selected disabled>Select gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="non-binary">Non-binary</option>
-                  </select>
-                </label>
-
-                <label class="smart-form__field">
-                  <span>Title</span>
-                  <input type="text" name="title" autocomplete="title" required />
-                </label>
-
-                <label class="smart-form__field">
                   <span>Business Domain</span>
                   <select name="business_domain" id="contact-domain-select" required>
                     <option value="" selected disabled>Select domain</option>
@@ -89,27 +74,19 @@ const sharedSectionMarkup: Record<SharedSectionName, string> = {
                     <option value="logistics">Logistics</option>
                     <option value="public">Public Sector</option>
                     <option value="education">Education</option>
+                    <option value="other">Specify Other</option>
                   </select>
                 </label>
 
-                <label class="smart-form__field smart-form__field--full">
-                  <span>Project hashtags</span>
-                  <div
-                    class="tags-editor"
-                    data-hashtags-editor
-                    data-source-select-id="contact-domain-select"
-                    data-default-prefix="domain"
-                  >
-                    <div class="tags-editor__list" data-hashtags-list aria-live="polite"></div>
-                    <input
-                      type="text"
-                      class="tags-editor__input"
-                      data-hashtags-input
-                      placeholder="Type and press Enter"
-                      aria-label="Project hashtags"
-                    />
-                    <input type="hidden" name="hashtags" data-hashtags-value />
-                  </div>
+                <label class="smart-form__field smart-form__field--hidden" id="contact-domain-other-field">
+                  <span>Specify domain</span>
+                  <input
+                    type="text"
+                    name="business_domain_other"
+                    id="contact-domain-other"
+                    placeholder="Specify domain"
+                    autocomplete="organization"
+                  />
                 </label>
 
                 <label class="smart-form__field smart-form__field--full">

@@ -272,6 +272,12 @@ main {
   background-clip: unset;
 }
 
+@media (max-width: 50rem) {
+  #splash-copy {
+    padding: 0 1rem;
+  }
+}
+
 @keyframes title-impact {
   0% {
     opacity: 0;
@@ -644,6 +650,7 @@ main {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.9rem;
+  font-size: 1rem;
 }
 
 .smart-form__field {
@@ -657,6 +664,10 @@ main {
   color: var(--fg-muted);
 }
 
+.smart-form__field--hidden {
+  display: none;
+}
+
 .smart-form input,
 .smart-form select,
 .smart-form textarea {
@@ -666,7 +677,8 @@ main {
   background: rgba(7, 13, 27, 0.86);
   color: var(--fg);
   padding: 0.68rem 0.75rem;
-  font: inherit;
+  font-family: inherit;
+  font-size: 1rem;
 }
 
 .smart-form textarea {
@@ -737,7 +749,8 @@ main {
   background: rgba(56, 189, 248, 0.2);
   color: var(--fg);
   padding: 0.75rem 1rem;
-  font: inherit;
+  font-family: inherit;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;

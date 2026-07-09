@@ -18,6 +18,7 @@ mountSharedSections();
 // the flash / image-reveal intro has played out.
 const COPY_VISIBLE_AT_MS = 3750;
 const TYPEWRITER_STAGGER_MS = 550;
+const SPLASH_TYPEWRITER_CHAR_DELAY_MS = 40;
 
 const copyEl = document.getElementById('splash-copy');
 const splashBgImageEl = document.getElementById('splash-bg-image');
@@ -35,6 +36,9 @@ const contactFormCardEl = document.getElementById('contact-form-card');
 const feedbackFormCardEl = document.getElementById('feedback-form-card');
 const genderSelectEl = document.getElementById('gender-select');
 const genderCustomFieldEl = document.getElementById('gender-custom-field');
+const contactDomainSelectEl = document.getElementById('contact-domain-select');
+const contactDomainOtherFieldEl = document.getElementById('contact-domain-other-field');
+const contactDomainOtherEl = document.getElementById('contact-domain-other');
 
 if (splashBgImageEl instanceof HTMLImageElement) {
   splashBgImageEl.src = splashImageUrl;
@@ -76,7 +80,10 @@ if (introFlashEl instanceof HTMLElement) {
 
 if (copyEl instanceof HTMLElement) {
   window.setTimeout(() => {
-    runTypewriters(copyEl, { staggerMs: TYPEWRITER_STAGGER_MS });
+    runTypewriters(copyEl, {
+      staggerMs: TYPEWRITER_STAGGER_MS,
+      charDelay: SPLASH_TYPEWRITER_CHAR_DELAY_MS,
+    });
   }, COPY_VISIBLE_AT_MS);
 }
 
@@ -136,6 +143,26 @@ function setupParallaxTypewriterReveal({
 }
 
 function setupCollaborationForms(): void {
+  if (
+    contactDomainSelectEl instanceof HTMLSelectElement &&
+    contactDomainOtherFieldEl instanceof HTMLElement &&
+    contactDomainOtherEl instanceof HTMLInputElement
+  ) {
+    const updateDomainOtherField = () => {
+      const needsCustomValue = contactDomainSelectEl.value === 'other';
+      contactDomainOtherFieldEl.classList.toggle('smart-form__field--hidden', !needsCustomValue);
+      contactDomainOtherFieldEl.setAttribute('aria-hidden', String(!needsCustomValue));
+      contactDomainOtherEl.required = needsCustomValue;
+
+      if (!needsCustomValue) {
+        contactDomainOtherEl.value = '';
+      }
+    };
+
+    contactDomainSelectEl.addEventListener('change', updateDomainOtherField);
+    updateDomainOtherField();
+  }
+
   if (
     !(collaborationYesButtonEl instanceof HTMLButtonElement) ||
     !(collaborationNoButtonEl instanceof HTMLButtonElement) ||
