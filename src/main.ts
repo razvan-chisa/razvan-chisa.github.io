@@ -3,8 +3,11 @@ import splashImageUrl from './assets/splash-screen.png';
 import architectureDiagramUrl from './assets/Architecture Diagram - Razvan Chisa v2.jpg';
 import urbanRecyclingImageUrl from './assets/UrbanRecycling.png';
 import qualityConsultingVideoUrl from './assets/stock-footage-man-and-woman-at-desk-with-laptop-shake-hands-hand-extended-across-table-over-documents-in.webm';
+import qualityConsultingPosterUrl from './assets/stock-footage-man-and-woman-at-desk-with-laptop-shake-hands-hand-extended-across-table-over-documents-in-CA79u841.png?url';
 import systemsThinkingVideoUrl from './assets/stock-footage-center-woman-planning-reaching-with-red-marker-writing-on-glass-while-tech-overlaying-charts.webm';
+import systemsThinkingPosterUrl from './assets/stock-footage-center-woman-planning-reaching-with-red-marker-writing-on-glass-while-tech-overlaying-charts-DJosaM6M.png?url';
 import aiIntegrationsVideoUrl from './assets/stock-footage-brainstorming-concept-icon-idea-on-robot-arm-artificial-intelligence-k-size-movie.webm';
+import aiIntegrationsPosterUrl from './assets/stock-footage-brainstorming-concept-icon-idea-on-robot-arm-artificial-intelligence-k-size-movie-udGZyoo4.png?url';
 import { runTypewriters, typeInto } from './typewriter';
 import { mountSharedSections } from './shared-sections';
 
@@ -43,14 +46,17 @@ if (architectureImageEl instanceof HTMLImageElement) {
 
 if (qualityConsultingVideoEl instanceof HTMLVideoElement) {
   qualityConsultingVideoEl.src = qualityConsultingVideoUrl;
+  qualityConsultingVideoEl.poster = qualityConsultingPosterUrl;
 }
 
 if (systemsThinkingVideoEl instanceof HTMLVideoElement) {
   systemsThinkingVideoEl.src = systemsThinkingVideoUrl;
+  systemsThinkingVideoEl.poster = systemsThinkingPosterUrl;
 }
 
 if (aiIntegrationsVideoEl instanceof HTMLVideoElement) {
   aiIntegrationsVideoEl.src = aiIntegrationsVideoUrl;
+  aiIntegrationsVideoEl.poster = aiIntegrationsPosterUrl;
 }
 
 projectImageEls.forEach((projectImageEl) => {

@@ -441,10 +441,31 @@ main {
   pointer-events: none;
 }
 
+.parallax-section__content {
+  font-size: 2em;
+  width: 33em;
+}
+
+@media (max-width: 48rem) {
+  .parallax-section__content {
+    font-size: 1.2em;
+    width: 90%;
+  }
+}
+
 .parallax-section__content.is-visible {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+.parallax-section__description {
+  margin: clamp(1rem, 2.5vw, 1.5rem) 0 0;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--fg-muted);
+  text-align: center;
 }
 
 .parallax-section__image {
