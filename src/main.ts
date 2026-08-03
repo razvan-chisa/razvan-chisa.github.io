@@ -22,6 +22,14 @@ async function init(): Promise<void> {
     resumeDownloadBtn.href = resumePdfUrl;
   }
 
+  // Set up project card images (must wait for mountSharedSections so project-image-* elements exist)
+  const projectImageElsAfterMount = [1, 2, 3, 4]
+    .map((index) => document.getElementById(`project-image-${index}`))
+    .filter((element): element is HTMLImageElement => element instanceof HTMLImageElement);
+  projectImageElsAfterMount.forEach((projectImageEl) => {
+    projectImageEl.src = urbanRecyclingImageUrl;
+  });
+
   // Set up typewriter reveals for shared sections (must wait for mountSharedSections)
   setupParallaxTypewriterReveal({
     titleId: 'resume-title',
@@ -59,9 +67,6 @@ const architectureImageEl = document.getElementById('architecture-image');
 const qualityConsultingVideoEl = document.getElementById('quality-consulting-video');
 const systemsThinkingVideoEl = document.getElementById('systems-thinking-video');
 const aiIntegrationsVideoEl = document.getElementById('ai-integrations-video');
-const projectImageEls = [1, 2, 3, 4]
-  .map((index) => document.getElementById(`project-image-${index}`))
-  .filter((element): element is HTMLImageElement => element instanceof HTMLImageElement);
 const collaborationYesButtonEl = document.getElementById('collaboration-yes');
 const collaborationNoButtonEl = document.getElementById('collaboration-no');
 const contactFormCardEl = document.getElementById('contact-form-card');
@@ -94,10 +99,6 @@ if (aiIntegrationsVideoEl instanceof HTMLVideoElement) {
   aiIntegrationsVideoEl.src = aiIntegrationsVideoUrl;
   aiIntegrationsVideoEl.poster = aiIntegrationsPosterUrl;
 }
-
-projectImageEls.forEach((projectImageEl) => {
-  projectImageEl.src = urbanRecyclingImageUrl;
-});
 
 if (introFlashEl instanceof HTMLElement) {
   // Once the flash has fully faded out, it has no further visual purpose —
