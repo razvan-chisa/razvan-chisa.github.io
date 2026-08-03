@@ -1,4 +1,4 @@
-type SharedSectionName = 'projects' | 'contact';
+type SharedSectionName = 'projects' | 'contact' | 'under-construction';
 
 const sharedSectionMarkup: Record<SharedSectionName, string> = {
   projects: `
@@ -127,6 +127,16 @@ const sharedSectionMarkup: Record<SharedSectionName, string> = {
               </form>
             </article>
           </div>
+        </div>
+      </div>
+    </section>
+  `,
+  'under-construction': `
+    <section id="under-construction" class="parallax-section" aria-labelledby="under-construction-title">
+      <div class="parallax-section__inner">
+        <h2 class="parallax-section__title" id="under-construction-title">Under Construction</h2>
+        <div class="parallax-section__content">
+          <p>This page is currently under construction. Please check back later.</p>
         </div>
       </div>
     </section>
