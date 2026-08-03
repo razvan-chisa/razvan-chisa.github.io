@@ -12,13 +12,38 @@ import { runTypewriters, typeInto } from './typewriter';
 import { mountSharedSections } from './shared-sections';
 import resumePdfUrl from './assets/Razvan Chisa 2026 - public.pdf?url';
 
-mountSharedSections();
+async function init(): Promise<void> {
+  await mountSharedSections();
 
-// Set the resume download link to the processed PDF URL
-const resumeDownloadBtn = document.querySelector<HTMLAnchorElement>('.resume-download-btn');
-if (resumeDownloadBtn) {
-  resumeDownloadBtn.href = resumePdfUrl;
+  // Set the resume download link to the processed PDF URL
+  // (must wait for mountSharedSections so the resume section is in the DOM)
+  const resumeDownloadBtn = document.querySelector<HTMLAnchorElement>('.resume-download-btn');
+  if (resumeDownloadBtn) {
+    resumeDownloadBtn.href = resumePdfUrl;
+  }
+
+  // Set up typewriter reveals for shared sections (must wait for mountSharedSections)
+  setupParallaxTypewriterReveal({
+    titleId: 'resume-title',
+    contentId: 'resume-content',
+  });
+
+  setupParallaxTypewriterReveal({
+    titleId: 'personal-projects-title',
+    contentId: 'personal-projects-content',
+  });
+
+  setupParallaxTypewriterReveal({
+    titleId: 'collaboration-title',
+    contentId: 'collaboration-content',
+  });
+
+  // Set up collaboration forms and hashtag editors (must wait for mountSharedSections)
+  setupCollaborationForms();
+  setupHashtagEditors();
 }
+
+init();
 
 // Matches the moment the `.splash__copy` container has fully faded in
 // (see the `fade-up` animation delay + duration in style.css), i.e. after
@@ -150,6 +175,18 @@ function setupParallaxTypewriterReveal({
 }
 
 function setupCollaborationForms(): void {
+  // Query elements fresh — module-level variables reference stale null values
+  // because they were captured at script-load time, before shared sections mount.
+  const contactDomainSelectEl = document.getElementById('contact-domain-select');
+  const contactDomainOtherFieldEl = document.getElementById('contact-domain-other-field');
+  const contactDomainOtherEl = document.getElementById('contact-domain-other');
+  const collaborationYesButtonEl = document.getElementById('collaboration-yes');
+  const collaborationNoButtonEl = document.getElementById('collaboration-no');
+  const contactFormCardEl = document.getElementById('contact-form-card');
+  const feedbackFormCardEl = document.getElementById('feedback-form-card');
+  const genderSelectEl = document.getElementById('gender-select');
+  const genderCustomFieldEl = document.getElementById('gender-custom-field');
+
   if (
     contactDomainSelectEl instanceof HTMLSelectElement &&
     contactDomainOtherFieldEl instanceof HTMLElement &&
@@ -364,20 +401,3 @@ setupParallaxTypewriterReveal({
   },
 });
 
-setupParallaxTypewriterReveal({
-  titleId: 'resume-title',
-  contentId: 'resume-content',
-});
-
-setupParallaxTypewriterReveal({
-  titleId: 'personal-projects-title',
-  contentId: 'personal-projects-content',
-});
-
-setupParallaxTypewriterReveal({
-  titleId: 'collaboration-title',
-  contentId: 'collaboration-content',
-});
-
-setupCollaborationForms();
-setupHashtagEditors();
