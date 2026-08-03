@@ -1,6 +1,29 @@
-type SharedSectionName = 'projects' | 'contact' | 'under-construction';
+type SharedSectionName = 'resume' | 'projects' | 'contact' | 'under-construction';
 
 const sharedSectionMarkup: Record<SharedSectionName, string> = {
+  resume: `
+    <section id="resume" class="parallax-section resume-section" aria-labelledby="resume-title">
+      <div class="parallax-section__inner">
+        <h2 class="parallax-section__title typewriter-line" id="resume-title" data-text="Curriculum Vitae">
+          <span class="typewriter-line__text"></span><span class="typewriter-line__cursor">&nbsp;</span>
+        </h2>
+
+        <div class="parallax-section__content resume-content" id="resume-content">
+          <p class="resume-description">Explore my professional background</p>
+          <a href="/src/assets/Razvan%20Chisa%202026%20-%20public.pdf" download class="resume-download-btn">
+            <span class="resume-download-btn__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </span>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+  `,
   projects: `
     <section id="personal-projects" class="parallax-section" aria-labelledby="personal-projects-title">
       <div class="parallax-section__inner">
@@ -10,22 +33,22 @@ const sharedSectionMarkup: Record<SharedSectionName, string> = {
 
         <div class="parallax-section__content" id="personal-projects-content">
           <div class="projects-grid" aria-label="Personal project cards">
-            <a class="project-card" href="/dummy/" aria-label="Open Urban Recycling project details">
+            <a class="project-card" href="/under-construction/" aria-label="Open Urban Recycling project details">
               <img class="project-card__image" id="project-image-1" alt="Urban Recycling project screenshot" />
               <span class="project-card__label">Urban Recycling</span>
             </a>
 
-            <a class="project-card" href="/dummy/" aria-label="Open Urban Recycling project details">
+            <a class="project-card" href="/under-construction/" aria-label="Open Urban Recycling project details">
               <img class="project-card__image" id="project-image-2" alt="Urban Recycling project screenshot" />
               <span class="project-card__label">Urban Recycling</span>
             </a>
 
-            <a class="project-card" href="/dummy/" aria-label="Open Urban Recycling project details">
+            <a class="project-card" href="/under-construction/" aria-label="Open Urban Recycling project details">
               <img class="project-card__image" id="project-image-3" alt="Urban Recycling project screenshot" />
               <span class="project-card__label">Urban Recycling</span>
             </a>
 
-            <a class="project-card" href="/dummy/" aria-label="Open Urban Recycling project details">
+            <a class="project-card" href="/under-construction/" aria-label="Open Urban Recycling project details">
               <img class="project-card__image" id="project-image-4" alt="Urban Recycling project screenshot" />
               <span class="project-card__label">Urban Recycling</span>
             </a>
@@ -52,7 +75,7 @@ const sharedSectionMarkup: Record<SharedSectionName, string> = {
 
             <article class="form-card" id="contact-form-card" hidden>
               <h3 class="form-card__title">Contact Form</h3>
-              <form class="smart-form" action="/dummy/" method="get">
+              <form class="smart-form" action="/under-construction/" method="get">
                 <label class="smart-form__field">
                   <span>Fullname</span>
                   <input type="text" name="fullname" autocomplete="name" required />
@@ -100,7 +123,7 @@ const sharedSectionMarkup: Record<SharedSectionName, string> = {
 
             <article class="form-card" id="feedback-form-card" hidden>
               <h3 class="form-card__title">Feedback Form</h3>
-              <form class="smart-form" action="/dummy/" method="get">
+              <form class="smart-form" action="/under-construction/" method="get">
                 <label class="smart-form__field">
                   <span>Email (optional)</span>
                   <input type="email" name="feedback_email" autocomplete="email" />

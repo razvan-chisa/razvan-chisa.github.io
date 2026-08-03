@@ -500,6 +500,118 @@ main {
   gap: 1rem;
 }
 
+/* ---------------- Resume / CV Download Section ---------------- */
+
+.resume-section {
+  position: relative;
+  min-height: 60svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(3rem, 8vw, 5rem) 1.25rem;
+  background:
+    radial-gradient(circle at 80% 30%, rgba(56, 189, 248, 0.12), transparent 50%),
+    radial-gradient(circle at 20% 70%, rgba(125, 211, 252, 0.08), transparent 45%),
+    linear-gradient(180deg, rgba(7, 13, 27, 0.7) 0%, rgba(5, 7, 13, 0.72) 100%);
+  background-attachment: fixed;
+}
+
+.resume-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.resume-description {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--fg-muted);
+  max-width: 36rem;
+}
+
+.resume-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: var(--fg);
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12) 0%, rgba(125, 211, 252, 0.06) 100%);
+  box-shadow:
+    0 0 20px rgba(56, 189, 248, 0.15),
+    inset 0 0 20px rgba(56, 189, 248, 0.05);
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease,
+    border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-download-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.25) 0%, rgba(125, 211, 252, 0.12) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.resume-download-btn:hover::before,
+.resume-download-btn:focus-visible::before {
+  opacity: 1;
+}
+
+.resume-download-btn:hover,
+.resume-download-btn:focus-visible {
+  border-color: var(--accent-soft);
+  box-shadow:
+    0 0 30px var(--accent-glow),
+    inset 0 0 25px rgba(56, 189, 248, 0.1);
+  transform: translateY(-2px);
+}
+
+.resume-download-btn:active {
+  transform: translateY(0);
+}
+
+.resume-download-btn__icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.resume-download-btn:hover .resume-download-btn__icon {
+  transform: translateY(2px);
+}
+
+.resume-download-btn span:not(.resume-download-btn__icon) {
+  position: relative;
+  z-index: 1;
+}
+
+.resume-download-btn:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 3px;
+}
+
+/* --------------- End: Resume / CV Download Section --------------- */
+
 .project-card {
   position: relative;
   overflow: hidden;
