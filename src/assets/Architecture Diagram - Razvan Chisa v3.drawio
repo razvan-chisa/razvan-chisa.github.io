@@ -88,7 +88,7 @@
             <mxPoint x="970" y="500" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ksvH4aCq59FPrnBm9oQs-11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=24;" value="&lt;font&gt;Frontend (Next.js)&lt;/font&gt;" vertex="1">
+        <mxCell id="ksvH4aCq59FPrnBm9oQs-11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;fontSize=24;" value="&lt;font&gt;Frontend (React)&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="200" x="440" y="400" as="geometry" />
         </mxCell>
         <mxCell id="ksvH4aCq59FPrnBm9oQs-22" edge="1" parent="1" source="S8W5ATjbQ8802wRkcbv7-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;">
