@@ -10,7 +10,7 @@ import aiIntegrationsVideoUrl from './assets/stock-footage-brainstorming-concept
 import aiIntegrationsPosterUrl from './assets/stock-footage-brainstorming-concept-icon-idea-on-robot-arm-artificial-intelligence-k-size-movie-udGZyoo4.png?url';
 import { runTypewriters, typeInto } from './typewriter';
 import { mountSharedSections } from './shared-sections';
-import resumePdfUrl from './assets/Razvan Chisa 2026 - public.pdf?url';
+import resumePdfUrl from './assets/Ronny 2026 v5 - public.pdf?url';
 
 async function init(): Promise<void> {
   await mountSharedSections();
