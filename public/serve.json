@@ -1,0 +1,9 @@
+{
+  "cleanUrls": false,
+  "rewrites": [
+    {
+      "source": "/ReverseProxy/Proxy/StarCraft2/sc2-daily.html",
+      "destination": "/sc2-daily.html"
+    }
+  ]
+}

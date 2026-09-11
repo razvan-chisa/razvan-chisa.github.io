@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webmain.azurewebsites.net/ReverseProxy/Proxy/StarCraft2/sc2-daily.html">
+    <meta property="og:title" content="StarCraft 2 Countdown">
+    <meta property="og:description" content="Hell! It's about time!">
+    <meta property="og:image" content="https://webmain.azurewebsites.net/ReverseProxy/Proxy/StarCraft2/StarCraft2-Meta.png">
+    <meta property="og:image:secure_url" content="https://webmain.azurewebsites.net/ReverseProxy/Proxy/StarCraft2/StarCraft2-Meta.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="StarCraft 2 Countdown">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="StarCraft 2 Countdown">
+    <meta name="twitter:description" content="Hell! It's about time!">
+    <meta name="twitter:image" content="https://webmain.azurewebsites.net/ReverseProxy/Proxy/StarCraft2/StarCraft2-Meta.png">
+    <link rel="canonical" href="https://webmain.azurewebsites.net/ReverseProxy/Proxy/StarCraft2/sc2-daily.html">
+    <title>StarCraft 2 Countdown</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            background-image:
+                url('https://wallpapers.com/images/hd/starcraft-2-logo-dark-background-hfypdl4foz1dtq97.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+        #timer {
+            position: absolute;
+            top: 66.6667%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 20px #00d4ff;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">00:00:00:000</div>
+
+    <script>
+        function updateTimer() {
+            const now = new Date();
+
+            // Event starts every day at 19:00.
+            const eventStart = new Date(now);
+            eventStart.setHours(20, 0, 0, 0);
+
+            // The countdown is active from 19:00 until 15:00 the next day.
+            // That's an 20-hour window; outside it the timer is zero.
+            const activeEnd = new Date(eventStart);
+            activeEnd.setDate(activeEnd.getDate() + 1);
+            activeEnd.setHours(15, 0, 0, 0);
+
+            let diff = 0;
+
+            if (now >= eventStart && now < activeEnd) {
+                diff = activeEnd - now;
+            } else if (now < eventStart) {
+                // Before today's event, count down to today's 19:00.
+                diff = eventStart - now;
+            }
+
+            // Only display a countdown during the intended 18-hour ETA window:
+            // ETA > 18 hours => 0.
+            if (diff > 18 * 60 * 60 * 1000) {
+                diff = 0;
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor(diff % 1000);
+
+            const hDisplay = hours.toString().padStart(2, '0');
+            const mDisplay = minutes.toString().padStart(2, '0');
+            const sDisplay = seconds.toString().padStart(2, '0');
+            const msDisplay = milliseconds.toString().padStart(3, '0');
+
+            document.getElementById('timer').textContent =
+                `${hDisplay}:${mDisplay}:${sDisplay}:${msDisplay}`;
+
+            requestAnimationFrame(updateTimer);
+        }
+
+        updateTimer();
+    </script>
+</body>
+</html>
