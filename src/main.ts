@@ -67,8 +67,8 @@ const architectureImageEl = document.getElementById('architecture-image');
 const qualityConsultingVideoEl = document.getElementById('quality-consulting-video');
 const systemsThinkingVideoEl = document.getElementById('systems-thinking-video');
 const aiIntegrationsVideoEl = document.getElementById('ai-integrations-video');
-const collaborationYesButtonEl = document.getElementById('collaboration-yes');
-const collaborationNoButtonEl = document.getElementById('collaboration-no');
+const contactToggleEl = document.getElementById('contact-toggle');
+const feedbackToggleEl = document.getElementById('feedback-toggle');
 const contactFormCardEl = document.getElementById('contact-form-card');
 const feedbackFormCardEl = document.getElementById('feedback-form-card');
 const genderSelectEl = document.getElementById('gender-select');
@@ -181,8 +181,8 @@ function setupCollaborationForms(): void {
   const contactDomainSelectEl = document.getElementById('contact-domain-select');
   const contactDomainOtherFieldEl = document.getElementById('contact-domain-other-field');
   const contactDomainOtherEl = document.getElementById('contact-domain-other');
-  const collaborationYesButtonEl = document.getElementById('collaboration-yes');
-  const collaborationNoButtonEl = document.getElementById('collaboration-no');
+  const contactToggleEl = document.getElementById('contact-toggle');
+  const feedbackToggleEl = document.getElementById('feedback-toggle');
   const contactFormCardEl = document.getElementById('contact-form-card');
   const feedbackFormCardEl = document.getElementById('feedback-form-card');
   const genderSelectEl = document.getElementById('gender-select');
@@ -209,33 +209,26 @@ function setupCollaborationForms(): void {
   }
 
   if (
-    !(collaborationYesButtonEl instanceof HTMLButtonElement) ||
-    !(collaborationNoButtonEl instanceof HTMLButtonElement) ||
+    !(contactToggleEl instanceof HTMLButtonElement) ||
+    !(feedbackToggleEl instanceof HTMLButtonElement) ||
     !(contactFormCardEl instanceof HTMLElement) ||
     !(feedbackFormCardEl instanceof HTMLElement)
   ) {
     return;
   }
 
-  const setMode = (mode: 'contact' | 'feedback'): void => {
-    const isContact = mode === 'contact';
-
-    contactFormCardEl.hidden = !isContact;
-    feedbackFormCardEl.hidden = isContact;
-
-    collaborationYesButtonEl.classList.toggle('is-active', isContact);
-    collaborationNoButtonEl.classList.toggle('is-active', !isContact);
-
-    collaborationYesButtonEl.setAttribute('aria-pressed', String(isContact));
-    collaborationNoButtonEl.setAttribute('aria-pressed', String(!isContact));
-  };
-
-  collaborationYesButtonEl.addEventListener('click', () => {
-    setMode('contact');
+  contactToggleEl.addEventListener('click', () => {
+    contactFormCardEl.hidden = !contactFormCardEl.hidden;
+    const isNowVisible = !contactFormCardEl.hidden;
+    contactToggleEl.classList.toggle('is-active', isNowVisible);
+    contactToggleEl.setAttribute('aria-pressed', String(isNowVisible));
   });
 
-  collaborationNoButtonEl.addEventListener('click', () => {
-    setMode('feedback');
+  feedbackToggleEl.addEventListener('click', () => {
+    feedbackFormCardEl.hidden = !feedbackFormCardEl.hidden;
+    const isNowVisible = !feedbackFormCardEl.hidden;
+    feedbackToggleEl.classList.toggle('is-active', isNowVisible);
+    feedbackToggleEl.setAttribute('aria-pressed', String(isNowVisible));
   });
 
   if (genderSelectEl instanceof HTMLSelectElement && genderCustomFieldEl instanceof HTMLElement) {
