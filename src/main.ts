@@ -220,15 +220,13 @@ function setupCollaborationForms(): void {
   contactToggleEl.addEventListener('click', () => {
     contactFormCardEl.hidden = !contactFormCardEl.hidden;
     const isNowVisible = !contactFormCardEl.hidden;
-    contactToggleEl.classList.toggle('is-active', isNowVisible);
-    contactToggleEl.setAttribute('aria-pressed', String(isNowVisible));
+    contactToggleEl.hidden = isNowVisible;
   });
 
   feedbackToggleEl.addEventListener('click', () => {
     feedbackFormCardEl.hidden = !feedbackFormCardEl.hidden;
     const isNowVisible = !feedbackFormCardEl.hidden;
-    feedbackToggleEl.classList.toggle('is-active', isNowVisible);
-    feedbackToggleEl.setAttribute('aria-pressed', String(isNowVisible));
+    feedbackToggleEl.hidden = isNowVisible;
   });
 
   if (genderSelectEl instanceof HTMLSelectElement && genderCustomFieldEl instanceof HTMLElement) {
