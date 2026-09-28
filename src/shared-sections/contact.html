@@ -1,0 +1,96 @@
+<section id="contact" class="parallax-section" aria-labelledby="collaboration-title">
+  <div class="parallax-section__inner">
+    <h2 class="parallax-section__title typewriter-line" id="collaboration-title" data-text="Contact forms">
+      <span class="typewriter-line__text"></span><span class="typewriter-line__cursor">&nbsp;</span>
+    </h2>
+
+    <div class="parallax-section__content" id="collaboration-content">
+      <div class="collaboration">
+        <p class="collaboration__question">Interested in working together?</p>
+
+        <button type="button" class="choice-button" id="contact-toggle">Let's discuss</button>
+
+        <article class="form-card" id="contact-form-card" hidden>
+          <h3 class="form-card__title">Collaboration Form</h3>
+          <form class="smart-form" action="https://formsubmit.co/ronnyourmatrix@gmail.com" method="post">
+            <label class="smart-form__field">
+              <span>Fullname</span>
+              <input type="text" name="fullname" autocomplete="name" required />
+            </label>
+
+            <label class="smart-form__field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+
+            <label class="smart-form__field">
+              <span>Business Domain</span>
+              <select name="business_domain" id="contact-domain-select" required>
+                <option value="" selected disabled>Select domain</option>
+                <option value="finance">Finance</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="retail">Retail & Ecommerce</option>
+                <option value="manufacturing">Manufacturing</option>
+                <option value="logistics">Logistics</option>
+                <option value="public">Public Sector</option>
+                <option value="education">Education</option>
+                <option value="other">Specify Other</option>
+              </select>
+            </label>
+
+            <label class="smart-form__field smart-form__field--hidden" id="contact-domain-other-field">
+              <span>Specify domain</span>
+              <input
+                type="text"
+                name="business_domain_other"
+                id="contact-domain-other"
+                placeholder="Specify domain"
+                autocomplete="organization"
+              />
+            </label>
+
+            <label class="smart-form__field smart-form__field--full">
+              <span>Message</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+
+            <button class="smart-form__submit smart-form__field--full" type="submit">Submit</button>
+          </form>
+        </article>
+
+        <p class="collaboration__question">Have feedback about this website?</p>
+
+        <button type="button" class="choice-button" id="feedback-toggle">Share feedback</button>
+
+        <article class="form-card" id="feedback-form-card" hidden>
+          <h3 class="form-card__title">Feedback Form</h3>
+          <form class="smart-form" action="https://formsubmit.co/ronnyourmatrix@gmail.com" method="post">
+            <label class="smart-form__field">
+              <span>Email (optional)</span>
+              <input type="email" name="feedback_email" autocomplete="email" />
+            </label>
+
+            <label class="smart-form__field">
+              <span>Feedback category</span>
+              <select name="feedback_category" required>
+                <option value="" selected disabled>Select category</option>
+                <option value="website">Website</option>
+                <option value="projects">Projects</option>
+                <option value="content">Content clarity</option>
+                <option value="collaboration">Collaboration process</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label class="smart-form__field smart-form__field--full">
+              <span>Message</span>
+              <textarea name="feedback_message" rows="5" required></textarea>
+            </label>
+
+            <button class="smart-form__submit smart-form__field--full" type="submit">Submit</button>
+          </form>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
